@@ -83,6 +83,20 @@ This system may over-prioritize genre and mood, which means it could ignore song
 ### Test Results
 
 ![Test Results](pytest-output.png)
+
+### Screenshot of my terminal output
+
+### High-Energy-Afrobeats
+![Test Results](High-Energy-Afrobeats.png)
+
+### Chill-Lofi
+![Test Results](Chill-Lofi.png)
+
+### Conflicting-Profile
+![Test Results](Conflicting-Profile.png)
+
+
+
 ---
 
 ## Getting Started

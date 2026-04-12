@@ -70,6 +70,13 @@ Prompts:
 - Cases where the system overfits to one preference  
 - Ways the scoring might unintentionally favor some users  
 
+Answer
+## Limitations and Bias
+
+One weakness of this recommender is that it can over-prioritize some features more than others. In my tests, genre and energy often had a stronger impact on ranking than mood, especially when the user profile had conflicting preferences. This means the system may ignore emotionally relevant songs if they do not also fit the strongest numerical signals.
+
+Another limitation is that the dataset is small, so the same songs can appear often across different profiles. This reduces variety and can create a filter bubble where the recommender keeps suggesting similar songs. The system is simple and explainable, but it does not yet have enough data or complexity to balance difficult preferences the way a real music platform would.
+
 ---
 
 ## 7. Evaluation  
@@ -85,6 +92,14 @@ Prompts:
 
 No need for numeric metrics unless you created some.
 
+Answer
+## Evaluation
+
+I tested the recommender with three different user profiles: High-Energy Afrobeats, Chill Lofi, and a Conflicting Profile. The High-Energy Afrobeats profile produced strong results, with songs like "Sunrise Parade" and "Golden Fire" ranking highest because they matched the user's preferred genre, mood, and energy level. The Chill Lofi profile also worked well, returning calmer and more acoustic songs such as "Library Rain" and "Midnight Coding."
+
+The most interesting test was the Conflicting Profile, which combined a sad mood with very high energy. In this case, the system mostly prioritized genre, energy, and acoustic preference, while mood had less visible influence on the results. This showed that the recommender works best when preferences are consistent and becomes less balanced when the profile contains conflicting signals.
+
+Overall, the results showed that the recommender is understandable and responsive, but also sensitive to its weights and limited by the size of the dataset.
 ---
 
 ## 8. Future Work  
