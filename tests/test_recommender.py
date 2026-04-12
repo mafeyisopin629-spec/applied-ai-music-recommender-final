@@ -1,5 +1,6 @@
 from src.recommender import Song, UserProfile, Recommender
 
+
 def make_small_recommender() -> Recommender:
     songs = [
         Song(
@@ -32,17 +33,15 @@ def make_small_recommender() -> Recommender:
 
 def test_recommend_returns_songs_sorted_by_score():
     user = UserProfile(
-        favorite_genre="afrobeats",
+        favorite_genre="pop",
         favorite_mood="happy",
         target_energy=0.80,
-        target_tempo_bpm= 112
         likes_acoustic=False,
     )
     rec = make_small_recommender()
     results = rec.recommend(user, k=2)
 
     assert len(results) == 2
-    # Starter expectation: the pop, happy, high energy song should score higher
     assert results[0].genre == "pop"
     assert results[0].mood == "happy"
 

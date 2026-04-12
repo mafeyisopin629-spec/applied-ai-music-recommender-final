@@ -75,6 +75,14 @@ This system may over-prioritize genre and mood, which means it could ignore song
 ### System Flow Diagram
 
 ![Recommender Flow](mermaid.png)
+
+### CLI Output
+
+![CLI Output](cli-output.png)
+
+### Test Results
+
+![Test Results](pytest-output.png)
 ---
 
 ## Getting Started
