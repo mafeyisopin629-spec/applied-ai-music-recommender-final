@@ -18,6 +18,27 @@ Replace this paragraph with your own summary of what your version does.
 ## How The System Works
 
 Explain your design in plain language.
+Answer
+This project simulates a simple content-based music recommender. Real music platforms often use many signals, such as likes, skips, replays, playlists, and listening behavior, but this version focuses on song features directly. In this system, each Song is described using attributes like genre, mood, energy, and tempo. The UserProfile stores the listener’s preferred genre, mood, energy level, and tempo range. The recommender compares each song to the user’s preferences and gives it a weighted score based on how closely it matches.
+
+The scoring rule gives the most weight to genre, then mood, and then checks how close the song is to the user’s preferred energy and tempo. After all songs are scored, the system ranks them from highest to lowest score and recommends the top matches. This makes the system simple, transparent, and easy to explain, even though it is much smaller than a real recommender used by platforms like Spotify or TikTok.
+---------------------------------------------------
+### Features Used
+
+**Song**
+- title
+- artist
+- genre
+- mood
+- energy
+- tempo_bpm
+
+**UserProfile**
+- preferred_genre
+- preferred_mood
+- preferred_energy
+- preferred_tempo_bpm
+
 
 Some prompts to answer:
 
@@ -29,6 +50,40 @@ Some prompts to answer:
 
 You can include a simple diagram or bullet list if helpful.
 
+Answer
+## How The System Works (2)
+
+This recommender is a simple content-based music recommendation system. It uses song features from the dataset, such as genre, mood, energy, and tempo_bpm, to compare each song against a user taste profile. The system does not rely on other users’ behavior. Instead, it focuses only on how closely each song matches the current user’s preferences.
+
+The user profile stores a favorite genre, favorite mood, target energy, and target tempo. For each song in the CSV file, the recommender applies a weighted scoring rule. A genre match adds 2.0 points, and a mood match adds 1.0 point. The system also gives similarity points for energy and tempo, so songs closer to the user’s target values receive higher scores. After scoring every song, the recommender sorts them from highest to lowest and returns the top matches.
+
+### Algorithm Recipe
+- +2.0 points for a genre match
+- +1.0 point for a mood match
+- + up to 1.0 point for energy similarity
+- + up to 1.0 point for tempo similarity
+
+### Example User Profile
+- favorite_genre: afrobeats
+- favorite_mood: happy
+- target_energy: 0.80
+- target_tempo_bpm: 112
+
+### Potential Biases
+This system may over-prioritize genre and mood, which means it could ignore songs outside the user’s favorite genre even if they are still a good fit. It may also create a small “filter bubble” by repeatedly favoring songs with very similar traits instead of encouraging discovery of different styles.
+
+flowchart TD
+    A[Load songs from songs.csv] --> B[Create User Profile]
+    B --> C[Loop through each song]
+    C --> D[Compare genre and mood]
+    D --> E[Calculate energy similarity]
+    E --> F[Calculate tempo similarity]
+    F --> G[Compute total score]
+    G --> H[Store scored song]
+    H --> I{More songs left?}
+    I -- Yes --> C
+    I -- No --> J[Sort songs by score]
+    J --> K[Return Top K Recommendations]
 ---
 
 ## Getting Started
