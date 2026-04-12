@@ -3,7 +3,7 @@
 ## 1. Model Name  
 
 Give your model a short, descriptive name.  
-Example: **VibeFinder 1.0**  
+Example: **VibeFinder 1.0**
 
 ---
 
@@ -124,3 +124,38 @@ Prompts:
 - What you learned about recommender systems  
 - Something unexpected or interesting you discovered  
 - How this changed the way you think about music recommendation apps  
+
+
+Answers
+## Model Name
+VibeMatch Recommender 1.0
+
+## Goal / Task
+This system recommends songs based on a user’s preferences such as genre, mood, energy level, and whether they like acoustic music.
+
+## Data Used
+The system uses a dataset of 18 songs stored in a CSV file. Each song includes features like genre, mood, energy, tempo, valence, danceability, and acousticness. The dataset is small, which limits the variety of recommendations.
+
+## Algorithm Summary
+The system gives points to songs based on how well they match the user’s preferences. It adds points for matching genre and mood, and calculates a similarity score for energy based on how close it is to the user’s target. It also adds points if the song matches the user’s acoustic preference. The songs are then ranked from highest score to lowest.
+
+## Observed Behavior / Biases
+The system tends to prioritize genre and energy more than mood. In some cases, songs that do not match the user’s mood still rank highly if they match energy and genre. The system also repeats similar songs because the dataset is small, which can reduce diversity.
+
+## Evaluation Process
+I tested the system using three different user profiles: High-Energy Afrobeats, Chill Lofi, and a Conflicting Profile. The first two profiles produced accurate and expected results. The conflicting profile showed that the system struggles when preferences do not align well. I also tested how changing feature weights affected the rankings and saw noticeable differences.
+
+## Intended Use and Non-Intended Use
+This system is intended for simple music recommendation experiments and learning how recommender systems work. It should not be used for real-world recommendations because it uses a small dataset and simple logic that does not fully capture user preferences.
+
+## Ideas for Improvement
+- Increase the dataset size to improve recommendation diversity  
+- Add more features like tempo matching or user history  
+- Improve how conflicting preferences are handled so the system balances them better  
+
+## Personal Reflection
+The biggest thing I learned from this project is how simple scoring rules can still produce realistic recommendations. Using AI tools helped me move faster, especially for debugging and structuring the code, but I still had to carefully check the logic to make sure everything worked correctly.
+
+One thing that surprised me is how even a basic algorithm can “feel” like a real recommender system when the scoring is done well. At the same time, I noticed that small changes in weights can significantly affect results.
+
+If I were to extend this project, I would add more user behavior data and possibly implement collaborative filtering to make the recommendations more advanced and realistic.
