@@ -71,19 +71,10 @@ The user profile stores a favorite genre, favorite mood, target energy, and targ
 
 ### Potential Biases
 This system may over-prioritize genre and mood, which means it could ignore songs outside the user’s favorite genre even if they are still a good fit. It may also create a small “filter bubble” by repeatedly favoring songs with very similar traits instead of encouraging discovery of different styles.
+---
+### System Flow Diagram
 
-flowchart TD
-    A[Load songs from songs.csv] --> B[Create User Profile]
-    B --> C[Loop through each song]
-    C --> D[Compare genre and mood]
-    D --> E[Calculate energy similarity]
-    E --> F[Calculate tempo similarity]
-    F --> G[Compute total score]
-    G --> H[Store scored song]
-    H --> I{More songs left?}
-    I -- Yes --> C
-    I -- No --> J[Sort songs by score]
-    J --> K[Return Top K Recommendations]
+![Recommender Flow](mermaid.png)
 ---
 
 ## Getting Started
