@@ -1,62 +1,65 @@
-"""
-Command line runner for the Music Recommender Simulation.
-
-This file helps you quickly run and test your recommender.
-
-You will implement the functions in recommender.py:
-- load_songs
-- score_song
-- recommend_songs
-"""
-
-from recommender import load_songs, recommend_songs
+from recommender import load_songs, UserProfile, Recommender
 
 
-def main() -> None:
-    songs = load_songs("data/songs.csv")
+def run_profile(recommender, profile_name, user):
+    print("\n" + "=" * 60)
+    print(f"Profile: {profile_name}")
+    print("=" * 60)
+
+    result = recommender.agent_recommend(user, k=5)
+
+    print("\n--- SYSTEM TRACE ---")
+    for step in result["trace"]:
+        print(step)
+
+    if result["status"] == "blocked":
+        print("\n❌ Guardrail blocked this input:")
+        for error in result["errors"]:
+            print(f"- {error}")
+        return
+
+    print("\n🎵 TOP RECOMMENDATIONS:\n")
+
+    for i, item in enumerate(result["recommendations"], start=1):
+        song = item["song"]
+        print(f"{i}. {song.title} by {song.artist}")
+        print(f"   Score: {item['score']}")
+        print(f"   Why: {item['explanation']}\n")
+
+    print("🔍 SELF CHECK:")
+    print(result["self_check"]["message"])
+
+
+def main():
+    print("Loading songs from data/songs.csv...")
+    songs_data = load_songs("data/songs.csv")
+    songs = songs_data
     print(f"Loaded songs: {len(songs)}")
 
+    recommender = Recommender(songs)
+
     profiles = [
-        {
-            "name": "High-Energy Afrobeats",
-            "prefs": {
-                "favorite_genre": "afrobeats",
-                "favorite_mood": "happy",
-                "target_energy": 0.8,
-                "likes_acoustic": False,
-            },
-        },
-        {
-            "name": "Chill Lofi",
-            "prefs": {
-                "favorite_genre": "lofi",
-                "favorite_mood": "chill",
-                "target_energy": 0.3,
-                "likes_acoustic": True,
-            },
-        },
-        {
-            "name": "Conflicting Profile",
-            "prefs": {
-                "favorite_genre": "rock",
-                "favorite_mood": "sad",
-                "target_energy": 0.9,
-                "likes_acoustic": False,
-            },
-        },
+        (
+            "High-Energy Afrobeats",
+            UserProfile("afrobeats", "happy", 0.90, False),
+        ),
+        (
+            "Chill Lofi",
+            UserProfile("lofi", "chill", 0.35, True),
+        ),
+        (
+            "Conflicting Profile",
+            UserProfile("electronic", "sad", 0.95, False),
+        ),
+        (
+            "Invalid Guardrail Example",
+            UserProfile("pop", "happy", 1.50, False),
+        ),
     ]
 
-    for profile in profiles:
-        print("\n" + "=" * 50)
-        print(f"Profile: {profile['name']}")
-        print("=" * 50)
+    for name, user in profiles:
+        run_profile(recommender, name, user)
 
-        recommendations = recommend_songs(profile["prefs"], songs, k=5)
 
-        print("\nTop recommendations:\n")
-        for i, (song, score, explanation) in enumerate(recommendations, start=1):
-            print(f"{i}. {song['title']} by {song['artist']} - Score: {score:.2f}")
-            print(f"   Because: {explanation}")
-            print()
 if __name__ == "__main__":
     main()
