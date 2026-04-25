@@ -39,5 +39,5 @@ Data flows from **user input → validation → retrieval → scoring → output
 
 1. Clone the repository:
 ```bash
-git clone <repo-link>
+git clone <https://github.com/mafeyisopin629-spec/applied-ai-music-recommender-final.git>
 cd applied-ai-music-recommender-final
