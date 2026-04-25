@@ -208,6 +208,25 @@ This project reinforced the idea that responsible AI development is not just abo
 
 -----
 
+## Stretch Feature: Test Harness
+
+I implemented an evaluation script (`evaluate.py`) that runs the system on multiple predefined test cases.
+
+It tests:
+- High-energy preferences
+- Chill/low-energy preferences
+- Conflicting inputs
+- System consistency
+
+### Results:
+- All test cases passed successfully
+- The system produced consistent and explainable recommendations
+- Guardrails and validation ensure stability
+
+![Evaluation Results](assets/assets_evaluation.png)
+
+----
+
 ### 💭Reflection
 
 Working on this project helped me understand that building an AI system is not just about getting the correct output, but about making the process reliable, explainable, and structured. At the beginning, I thought the recommender was already “done” because it produced results, but this project showed me that a real AI system needs more layers like validation, testing, and transparency.
