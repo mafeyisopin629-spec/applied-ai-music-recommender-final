@@ -187,6 +187,27 @@ Overall, the system is reliable, interpretable, and handles both normal and edge
 
 -----
 
+## Reflection and Ethics
+
+### Limitations and Biases
+One limitation of my system is that it relies on a fixed dataset of songs, which means the recommendations are limited to what is already available. This can introduce bias because certain genres, moods, or artists may be overrepresented while others are missing. Also, the scoring system is rule-based, so it may not fully capture complex user preferences or evolving tastes.
+
+### Potential Misuse and Prevention
+The system could be misused if users intentionally provide unrealistic or extreme inputs to try to break it or generate misleading recommendations. To prevent this, I implemented guardrails such as validating that energy values must be between 0 and 1. This ensures the system only processes reasonable inputs and maintains stability.
+
+### What Surprised Me During Testing
+One thing that surprised me was how small changes in user input could significantly affect the ranking of songs. For example, slightly adjusting the energy level would reorder the recommendations in noticeable ways. This showed me how sensitive scoring systems can be and why careful tuning is important.
+
+### Collaboration with AI
+During this project, AI tools were helpful in guiding my structure and debugging issues. One helpful instance was when AI suggested adding a system trace, which made it easier to understand and explain how the recommendations were generated step by step.
+
+However, there were also moments where AI suggestions were incorrect or incomplete. For example, at one point, it suggested using a function (`agent_recommend`) that was not properly defined in my code, which caused errors. I had to debug and verify the implementation myself. This showed me that while AI is useful, it still requires careful human oversight.
+
+### Final Thought
+This project reinforced the idea that responsible AI development is not just about building something that works, but making sure it is fair, reliable, and transparent. Human judgment is still necessary to validate, improve, and guide AI systems.
+
+-----
+
 ### 💭Reflection
 
 Working on this project helped me understand that building an AI system is not just about getting the correct output, but about making the process reliable, explainable, and structured. At the beginning, I thought the recommender was already “done” because it produced results, but this project showed me that a real AI system needs more layers like validation, testing, and transparency.
