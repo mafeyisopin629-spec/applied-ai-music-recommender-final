@@ -1,75 +1,43 @@
 # 🎧 VibeAgent AI Music Recommender
 
-## Overview
-This project is an applied AI system that recommends music based on a user’s preferences such as genre, mood, energy level, and acoustic preference.
+## Original Project (Module 3)
+This project is based on my earlier **Music Recommender Simulation** from Module 3.  
+The original system focused on recommending songs using simple scoring rules based on genre, mood, and energy.
 
-It extends a basic recommender into an **agent-based AI system** that:
-- Validates user input (guardrails)
-- Retrieves relevant songs from a dataset
-- Scores and ranks songs
-- Explains recommendations
-- Performs a self-check for reliability
+In this final version, I extended it into a **full applied AI system** by adding an agent workflow, guardrails, and evaluation steps.
 
 ---
 
-## ⚙️ How It Works
+## Title & Summary
+VibeAgent is an AI-powered music recommender that generates personalized song suggestions based on user preferences.
 
-1. User enters preferences (genre, mood, energy, acoustic)
-2. System validates input (guardrails)
-3. AI retrieves matching songs from dataset
-4. Songs are scored based on similarity
-5. Top recommendations are returned
-6. System explains WHY each song was chosen
-7. AI performs a self-check to ensure quality
-
----
-
-## AI Features Implemented
-
-### ✅ Agentic Workflow
-The system follows a step-by-step reasoning process:
-- Validate → Retrieve → Rank → Self-check
-
-### ✅ Guardrails (Reliability)
-- Blocks invalid inputs (e.g., energy outside 0–1)
-- Prevents incorrect recommendations
-
-### ✅ Explanation System
-Each recommendation includes:
-- Score
-- Reason (genre match, mood match, energy similarity)
-
-### ✅ Self-Check
-The system verifies whether the top result matches user preferences.
+It matters because it demonstrates how AI systems:
+- Process user input
+- Apply reasoning
+- Generate explanations
+- Validate outputs for reliability
 
 ---
 
-## System Architecture
+## Architecture Overview
 
 ![Architecture Diagram](assets/architecture.png)
 
-The system includes:
-- CLI Interface (main.py)
-- Recommender Agent
-- Dataset (songs.csv)
+The system is made up of:
+- CLI Interface (`main.py`)
+- Recommender Agent (`Recommender` class)
+- Dataset (`songs.csv`)
 - Scoring Engine
-- Self-check Evaluator
+- Guardrails (input validation)
+- Self-check evaluator
+
+Data flows from **user input → validation → retrieval → scoring → output → self-check**
 
 ---
 
-## Testing & Reliability
+## ⚙️ Setup Instructions
 
-- Unit tests using `pytest`
-- Manual CLI testing with multiple profiles:
-  - High-energy Afrobeat
-  - Chill lofi
-  - Conflicting preferences
-  - Invalid input (guardrail test)
-
----
-
-## ▶️ How to Run
-
+1. Clone the repository:
 ```bash
-pip install pytest
-python src/main.py
+git clone <repo-link>
+cd applied-ai-music-recommender-final
