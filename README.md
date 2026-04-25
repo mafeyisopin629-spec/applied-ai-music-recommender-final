@@ -128,7 +128,7 @@ But less powerful than real machine learning systems
 
 -----
 
-### Testing Summary
+### Testing Summary (1)
 
 What worked:
 
@@ -148,17 +148,56 @@ Components must be connected correctly to work
 
 -----
 
+## Reliability and Evaluation
+
+To ensure the AI system works correctly and consistently, I implemented multiple reliability checks and evaluation methods.
+
+### ✅ Automated Testing
+I used `pytest` to test the recommender system functions. All tests passed successfully, confirming that core logic such as scoring and recommendation ranking works as expected.
+
+### Logging and System Trace
+The system includes a detailed trace of each step:
+- Step 1: Validate user preferences
+- Step 2: Retrieve songs
+- Step 3: Rank songs
+- Step 4: Self-check output
+
+This makes it easy to debug and understand how recommendations are generated.
+
+### Guardrails (Error Handling)
+Input validation ensures reliability. For example:
+- Energy must be between 0 and 1
+- Invalid inputs are blocked before processing
+
+This prevents incorrect or unsafe outputs.
+
+### Self-Evaluation
+The system includes a self-check step that explains why the top recommendation was selected. This improves transparency and trust in the AI.
+
+---
+
+### Testing Summary (2)
+
+- All automated tests passed (2/2)
+- The system performs well across different user profiles (high-energy, chill, conflicting preferences)
+- Guardrails successfully block invalid inputs
+- Recommendations remain consistent and explainable
+
+Overall, the system is reliable, interpretable, and handles both normal and edge cases effectively.
+
+-----
+
 ### 💭Reflection
 
-In this project, I extended a basic recommender into a full AI system with reasoning and validation.
+Working on this project helped me understand that building an AI system is not just about getting the correct output, but about making the process reliable, explainable, and structured. At the beginning, I thought the recommender was already “done” because it produced results, but this project showed me that a real AI system needs more layers like validation, testing, and transparency.
 
-AI tools helped me debug issues and implement features like the agent workflow, but sometimes gave incorrect suggestions, which I had to manually fix. This showed me that AI is useful but still requires human understanding.
+One of the biggest things I learned was how important guardrails are. Before adding them, the system would accept any input, even invalid ones, which could break the logic or give meaningless results. After adding validation checks, I saw how much more stable and professional the system became. It made me realize that handling edge cases is just as important as the main functionality.
 
-Adding guardrails and a self-check improved the system’s reliability and made it more trustworthy.
+I also learned how useful system tracing is. Being able to clearly show each step the AI takes (validate → retrieve → rank → check) made debugging much easier and helped me understand my own code better. Instead of guessing what went wrong, I could actually see the reasoning process step by step.
 
-One limitation is that the system uses simple scoring instead of machine learning. In the future, I would improve it by using larger datasets and more advanced models.
+Another important takeaway was testing. Using pytest showed me that even simple tests can give confidence that the system works correctly. It also helped me think more carefully about how my functions should behave under different conditions.
 
-Overall, this project helped me understand how real AI systems combine data, logic, and evaluation to produce meaningful results.
+If I had more time, I would improve the system by adding a real user interface and possibly integrating a real-time music API instead of a static dataset. I would also explore more advanced recommendation techniques like machine learning models instead of rule-based scoring.
 
-------
+Overall, this project changed how I think about AI systems. It’s not just about getting results; it’s about building something that is reliable, explainable, and ready for real-world use.
 
