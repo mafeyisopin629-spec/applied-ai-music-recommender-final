@@ -241,3 +241,16 @@ If I had more time, I would improve the system by adding a real user interface a
 
 Overall, this project changed how I think about AI systems. It’s not just about getting results; it’s about building something that is reliable, explainable, and ready for real-world use.
 
+----------
+
+## 🎥 Demo Video
+
+[Loom Walkthrough](https://www.loom.com/share/85e0eb85d2314b21afb2c3ee39e88800)
+
+------
+
+## Portfolio Reflection
+
+This project shows my ability to design and implement an AI system beyond just basic outputs. I built a music recommender that uses an agent-like workflow, including validation, scoring, and self-checking, which makes the system more reliable and structured.
+
+It also reflects my problem-solving skills, especially in debugging issues, handling edge cases, and improving system behavior through testing. Overall, it demonstrates how I think about AI systems not just as models, but as complete, working applications.
