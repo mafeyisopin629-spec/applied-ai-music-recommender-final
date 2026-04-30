@@ -254,3 +254,16 @@ Overall, this project changed how I think about AI systems. It’s not just abou
 This project shows my ability to design and implement an AI system beyond just basic outputs. I built a music recommender that uses an agent-like workflow, including validation, scoring, and self-checking, which makes the system more reliable and structured.
 
 It also reflects my problem-solving skills, especially in debugging issues, handling edge cases, and improving system behavior through testing. Overall, it demonstrates how I think about AI systems not just as models, but as complete, working applications.
+
+
+## 🌐 Web App Interface
+
+![VibeAgent UI](assets/app-ui.png)
+
+## 🌐 Web App (Streamlit)
+
+Run the app locally:
+
+```bash
+pip install streamlit
+python -m streamlit run app.py
